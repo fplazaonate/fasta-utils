@@ -9,7 +9,7 @@ import os
 import time
 
 __author__ = "Florian Plaza Oñate"
-__copyright__ = "Copyright 2014, Enterome"
+__copyright__ = "Copyright 2015, Enterome"
 __license__ = "GPLv3"
 __version__ = "1.0.0"
 __maintainer__ = "Florian Plaza Oñate"
