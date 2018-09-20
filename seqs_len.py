@@ -47,7 +47,7 @@ def fasta_seqs_length(istream):
         line = line.rstrip()
         if line.startswith(">"):
             if header: yield (header, seq_length)
-            header, seq_length = line[1:], 0
+            header, seq_length = line[1:].split(' ')[0], 0
         else:
             seq_length = seq_length + len(line)
 
@@ -60,8 +60,8 @@ def main():
     print('Computing length of sequences...')
     start = time.clock()
     with open(parameters.fasta_file, 'r') as istream, open(parameters.output_file, 'w') as ostream:
-        for header, seq_length in fasta_seqs_length(istream):
-            print('"{0}"\t{1}'.format(header, seq_length), file=ostream)
+        for i, (header, seq_length) in enumerate(fasta_seqs_length(istream), start=1):
+            print('{0}\t{1}\t{2}'.format(i, header, seq_length), file=ostream)
     stop = time.clock()
     elapsed = stop -start
     print('Done in {0} seconds'.format(elapsed))
